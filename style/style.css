@@ -7,15 +7,20 @@
 }
 
 :root {
-    --primary-color: hsl(170, 100%, 26%);
+    --primary-color: #00856f;
     --color-light: #FFFFFF;
-    --headline: hsl(210, 11%, 15%);
-    --paragraph: hsl(210, 9%, 31%);
+    --headline: #22262a;
+    --paragraph: #484f56;
     --brand-light: #DCE9E2;
     --brand-beige: #FFFAF1;
+    --bg-light:#F7F9F9;
     font-size: 62.5%;
     /* 1 rem é igual a 10px*/
     --nav-height: 7.2rem
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 html,
@@ -29,6 +34,7 @@ body {
     font-size: 1.6rem;
     text-align: center;
     overflow: overlay;
+    background-color: var(--bg-light);
 }
 
 .wrapper {
@@ -41,100 +47,41 @@ ul {
     list-style: none;
 }
 
-
-/*===========HEADER=======================*/
-
-header {
-    margin-top: calc(4.1rem + var(--nav-height));
+img {
+    max-width: 100%;
 }
 
-header::before {
-    content: '';
-    width: 100%;
-    height: calc(108rem + var(--nav-height));
-    background-color: var(--brand-light);
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
+section{
+    padding-block: 10rem;
 }
 
-header h4 {
+section header h4{
     font-size: 1.4rem;
+    font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 1.6rem;
+    line-height: 150%;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
 }
-
-header h1 {
+section header h2{
+    color: var(--headline);
+    font-size: 3rem;
+    line-height: 3.9rem;
+    
+}
+section header h1{
     color: var(--headline);
     line-height: 130%;
     font-size: 3.4rem;
     margin-bottom: 2.4rem;
 }
-
-header p {
-    font-size: 1.8rem;
-    line-height: 150%;
-    font-weight: 400;
+section .content p{
     color: var(--paragraph);
-    margin-bottom: 3.2rem;
-}
-
-header button {
-    background-color: var(--primary-color);
-    color: var(--color-light);
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 4rem;
-    margin-bottom: 6rem;
-    height: 6.2rem;
-    width: 26.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.6rem;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.imagem-mulher {
-    width: 26.3rem;
-    display: block;
-    margin-inline: auto;
-    object-position: 0 2rem;
-}
-
-.stats {
-    background-color: var(--brand-beige);
-    width: 32.7rem;
-    padding-block: 4rem;
-    margin-inline: auto;
-    border: 1px solid var(--brand-light);
-    border-radius: 0.6rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6rem;
-}
-
-.stat p {
-    margin: 0;
+    font-weight: 400;
+    font-size: 1.6rem;
     line-height: 150%;
-    color: var(--primary-color);
 }
-
-.stat h3 {
-    color: var(--headline);
-    font-weight: 700;
-    font-size: 4.8rem;
-    margin-bottom: 0.4rem;
-    line-height: 130%;
-}
-
-
 /*===========NAVEGATION=================*/
 
 nav {
@@ -142,8 +89,8 @@ nav {
     height: var(--nav-height);
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100vw;
+    z-index: 100;
 }
 
 nav .wrapper {
@@ -154,12 +101,11 @@ nav .wrapper {
 
 nav.scroll {
     background-color: var(--primary-color);
-    width: 100vw;
-    position: fixed;
-    top: 0;
+   
+   
 }
 
-nav.scroll svg:nth-child(1) path {
+nav.scroll .logo path {
     fill: white;
 }
 
@@ -173,7 +119,6 @@ nav button {
     cursor: pointer;
 }
 
-
 /*===========NAVEGATION=MENU=EXPENDED================*/
 
 body.menu-expanded {
@@ -181,7 +126,7 @@ body.menu-expanded {
 }
 
 body.menu-expanded> :not(nav) {
-    display: none;
+   visibility: hidden;
 }
 
 .menu,
@@ -197,6 +142,9 @@ body.menu-expanded .close-menu {
     visibility: visible;
 }
 
+.menu{
+    transform: translateY(100%);
+}
 body.menu-expanded .menu {
     position: fixed;
     top: 0;
@@ -205,10 +153,9 @@ body.menu-expanded .menu {
     width: 100vw;
     height: 100vh;
     padding-top: var(--nav-height);
-}
+    transition: transform 300ms;
 
-body.menu-expanded nav {
-    position: relative;
+    transform: translateY(0);    
 }
 
 .menu ul:nth-child(1) {
@@ -262,4 +209,121 @@ body.menu-expanded .logo path {
 
 body.menu-expanded button path {
     stroke: white;
+}
+
+/*===========Home=======================*/
+
+#home {
+    padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before {
+    content: '';
+    width: 100%;
+    height: calc(108rem + var(--nav-height));
+    background-color: var(--brand-light);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#home p {
+    font-size: 1.8rem;
+    line-height: 150%;
+    font-weight: 400;
+    color: var(--paragraph);
+    margin-bottom: 3.2rem;
+}
+
+#home button {
+    background-color: var(--primary-color);
+    color: var(--color-light);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4rem;
+    margin-bottom: 6rem;
+    height: 6.2rem;
+    width: 26.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#home .imagem-mulher {
+    width: 26.3rem;
+    display: block;
+    margin-inline: auto;
+    object-position: 0 2rem;
+}
+
+#home .stats {
+    background-color: var(--brand-beige);
+    width: 32.7rem;
+    padding-block: 4rem;
+    margin-inline: auto;
+    border: 1px solid var(--brand-light);
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6rem;
+}
+
+#home .stat p {
+    margin: 0;
+    line-height: 150%;
+    color: var(--primary-color);
+}
+
+#home .stat h3 {
+    color: var(--headline);
+    font-weight: 700;
+    font-size: 4.8rem;
+    margin-bottom: 0.4rem;
+    line-height: 130%;
+}
+
+/*===========SERVICES================*/
+
+
+#services header h2{
+    margin-bottom: 6rem;
+}
+#services .cards{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+#services .card{
+    padding: 2.4rem;
+    text-align: left;
+    background-color: var(--color-light);
+    border: 1px solid var(--brand-beige);
+    box-sizing: border-box;
+    border-radius: 0.6rem;
+}
+#services .card h3{
+    margin-block: 1.6rem;
+}
+
+/*===========ABOUT================*/
+
+#about{
+    text-align: left;
+    background-color: var(--brand-beige);
+}
+#about h2{
+    margin-bottom: 2.4rem;
+}
+#about p{
+    margin-top: 2.4rem;
+    margin-bottom: 6rem;
+
 }
